@@ -7,49 +7,29 @@ setTimeout(function() {
   $("img, video").addClass("scrollable");
   console.log("ok");
   //var $list = $(".inlineFrame.read");
-  var $current = $(".inlineFrame.selected");
+  var $current = $(".inlineFrame.selectedx");
   if (!$current.length) {
     $current = $(".inlineFrame:first");
   }
-  /*$list.each(function() {
-    console.log($(this).offset().top, window.pageYOffset);
-    if ($(this).offset().top > window.pageYOffset) {
-      $current = $(this);
-      return false;
-    }
-  });*/
-  //console.log([$list, $current]);
   scrollImage($current);
 }, 2000);
 
 var currentOffset = window.pageYOffset;
 
 function scrollImage($current) {
-  //var nextIndex = $list.index($current) + 1;
-  //console.log(nextIndex);
-  //console.log($list, $current);
+  var $media = null;
 
-  var $next = null;
-
-  $current.find("img, video").each(function() {
-    console.log($(this).offset().top, window.pageYOffset);
-    if ($(this).offset().top > window.pageYOffset) {
-      $current = $(this);
+  $(".inlineFrame img,.inlineFrame video").each(function() {
+    if ($(this).offset().top > window.pageYOffset + 100) {
+      console.log($(this).attr("src"));
+      console.log($(this).offset().top, window.pageYOffset);
+      $media = $(this);
+      $("html, body").animate({ scrollTop: $media.offset().top - 50 }, 0);
       return false;
     }
   });
-  if (!$next) {
-    return;
-  }
+  //console.log($media);
   setTimeout(() => {
-    scrollImage($list, $next);
+    scrollImage($current);
   }, 300);
-  if (!$current.offset()) {
-    return;
-  }
-  if (currentOffset > $current.offset().top) {
-    return;
-  }
-  currentOffset = $current.offset().top;
-  $("html, body").animate({ scrollTop: $current.offset().top }, 0);
 }
