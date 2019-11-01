@@ -23,6 +23,7 @@ var isScrolling = false;
 var $div = $(
   '<button class="primary button-icon-only" title="Share with teammates" type="button" style="position: absolute; right:0;"><i class="icon icon-md icon-fx-share-to-team"></i></button>'
 );
+$("#headerBarFX").prepend($div);
 $div.click(function() {
   if (isScrolling) {
     isScrolling = false;
