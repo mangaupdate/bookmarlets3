@@ -1,3 +1,4 @@
+document.title = document.title + " 1";
 if ("performance" in window == false) {
   window.performance = {};
 }
