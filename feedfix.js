@@ -50,7 +50,7 @@ function scrollImage($current) {
     }
   });
   //console.log($media);
-  setTimeout(() => {
+  setTimeout(function() {
     scrollImage($current);
   }, 300);
 }
